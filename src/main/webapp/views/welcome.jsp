@@ -10,6 +10,17 @@
 <br> <Br> 
 <center> 
 <h2> Hello Aman</h2>
+<br> <Br>
+<form id="login" action="login" method="post">
+    <label>Username: </label>
+    <input type="text" name="username">
+    <br/>
+    <label>Password: </label>
+    <input type="text" name="password">
+    <br/>
+    <button>Submit</button>
+</form>
+
 </center>
 </body>
 </html>

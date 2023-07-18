@@ -27,6 +27,14 @@ public class TestController {
 		int b = 32;
 		return a+b;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/login")
+	public String testLogin() {
+		
+		return "login working";
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/subtract")
