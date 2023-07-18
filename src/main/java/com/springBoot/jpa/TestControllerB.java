@@ -13,7 +13,7 @@ public class TestControllerB {
 	JdbcTemplate jdbc;
 	
 	@ResponseBody
-	@PostMapping("/createTables");
+	@PostMapping("/createTables")
 	public String CreateTables() {
 		String sql1 = "CREATE TABLE Employees (EmployeeID int PRIMARY KEY, name varchar(50), department varchar(50))";
 		jdbc.update(sql1);
@@ -34,7 +34,7 @@ public class TestControllerB {
 	}
 	
 	@ResponseBody
-	@PostMapping("/alterTables");
+	@PostMapping("/alterTables")
 	public String AlterTable() {
 		String tablename1 = "Employees";
 		String sql = "ALTER TABLE" +tablename1+ "ADD COLUMN position varchar(50)";
@@ -61,7 +61,7 @@ public class TestControllerB {
 	}
 	
 	@ResponseBody
-	@PostMapping("/insertTables");
+	@PostMapping("/insertTables")
 	public String InsertTables() {
 		String tablename1 = "Employees";
 		String sql1 = "INSERT INTO" +tablename1+ "(EmployeeID, name, department) VALUES (1, Vaishali, MECH)";
@@ -82,11 +82,12 @@ public class TestControllerB {
 		String tablename5 = "Logins";
 		String sql5 = "INSERT INTO" +tablename5+ "(UserID, Username, password) VALUES (2, RICHA, richa)";
 		jdbc.update(sql5);
+		return sql5;
 		
 	}	
 		
 	@ResponseBody
-	@PostMapping("/addStrings");
+	@PostMapping("/addStrings")
 	public String addStrings() {
 		String str1 = "Hello";
 		String str2 = "World";

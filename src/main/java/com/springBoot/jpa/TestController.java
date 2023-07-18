@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springBoot.jpa.dao.UserRepository;
 import com.springBoot.jpa.entites.Users;
 
-@RestController
+@Controller
 public class TestController {
 
 	@Autowired
@@ -58,10 +58,10 @@ public class TestController {
 		return "data added successfully!";
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping("/")
 	public String test3() {
-		return "Mapping Successful";
+		return "welcome";
 	}
 	
 	@ResponseBody
