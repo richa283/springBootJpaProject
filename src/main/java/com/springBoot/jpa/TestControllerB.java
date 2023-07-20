@@ -2,15 +2,24 @@ package com.springBoot.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class TestControllerB {
 
 	@Autowired
 	JdbcTemplate jdbc;
+	
+	
+	@RequestMapping("/signUp")
+	public String signUpHandlerMethod() {
+		
+		return "signUp";
+	}
 	
 	@ResponseBody
 	@PostMapping("/createTables")

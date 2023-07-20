@@ -11,14 +11,17 @@
 <center> 
 <h2> Hello Aman</h2>
 <br> <Br>
-<form id="login" action="login" method="post">
+<form id="login" action="login"  method="GET">
     <label>Username: </label>
     <input type="text" name="username">
-    <br/>
+    <br/><br/>
     <label>Password: </label>
-    <input type="text" name="password">
+    <input type="password" name="password">
     <br/>
-    <button>Submit</button>
+    <button type="submit">Login</button> 
+    
+    <br> <br> <br> 
+    <a href="signUp"> Sign up Here </a>
 </form>
 
 </center>
