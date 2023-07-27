@@ -35,7 +35,7 @@ public class TestController {
 	@RequestMapping("/signUp")
 	public String signUpHandlerMethod() 
 	{
-		return "Hi";
+		return "signUp";
 	}
 
 	@ResponseBody
