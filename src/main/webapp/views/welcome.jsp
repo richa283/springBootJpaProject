@@ -20,7 +20,7 @@
 			<input type="submit" value="Submit"/>
 			<input type="reset" />
 			<br><br>
-			<a href="http://localhost:8080/signUp">Sign Up Here</a>
+			<a href="signUp">Sign Up Here</a>
 		</form>
 	</div>
 
