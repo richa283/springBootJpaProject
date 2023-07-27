@@ -14,13 +14,6 @@ public class TestControllerB {
 	@Autowired
 	JdbcTemplate jdbc;
 	
-	
-	@RequestMapping("/signUp")
-	public String signUpHandlerMethod() {
-		
-		return "signUp";
-	}
-	
 	@ResponseBody
 	@PostMapping("/createTables")
 	public String CreateTables() {

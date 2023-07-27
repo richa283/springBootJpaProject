@@ -21,6 +21,23 @@ public class TestController {
 	@Autowired
 	JdbcTemplate jdbc;
 	
+	
+	@ResponseBody
+	@RequestMapping("/LoginServlet")
+	public String testLogin( @RequestParam String email,@RequestParam String password) {
+		
+		String emailid = email;
+		String pass = password;
+		
+		return "Login successful by "+ emailid;
+	}
+	
+	@RequestMapping("/signUp")
+	public String signUpHandlerMethod() 
+	{
+		return "Hi";
+	}
+
 	@ResponseBody
 	@RequestMapping("/add")
 	public int test() {
@@ -29,17 +46,6 @@ public class TestController {
 		return a+b;
 	}
 	
-	@ResponseBody
-	@RequestMapping("/login")
-	public String testLogin( @RequestParam String username,@RequestParam String password) {
-		
-		String name = username;
-		String pass = password;
-		
-		return "Hi "+ name;
-	}
-	
-
 	@ResponseBody
 	@RequestMapping("/subtract")
 	public int test4() {

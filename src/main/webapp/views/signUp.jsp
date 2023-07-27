@@ -2,17 +2,40 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+	<title>SIGN UP HERE</title>
 </head>
-<body>
-<br> <Br> 
-<center> 
-<h2> Hello Richa</h2>
-<h2> Please SignUp Here</h2>
-<br> <Br>
 
-</center>
+<body>
+<br><br>
+	<div align="center">
+		<h2>Sign Up Form</h2>
+		<form action = "signUp" method="post">
+			<label>Name</label>
+			<input type = "text" name = "name" />
+			<br><br>
+			<label>Fathers Name</label>
+			<input type="text" name="fathername"/>
+			<br><br>
+			<label>Mothers Name</label>
+			<input type="text" name="mothername"/>
+			<br><br>
+			<label>Mobile Number</label>
+			<input type="number" name="mobile"/>
+			<br><br>
+			<label>Residential Address</label>
+			<input type="text" name="address"/>
+			<br><br>
+			<label>Email ID</label>
+			<input type="text" name="email"/>
+			<br><br>
+
+			<input type="button" value="Submit"/>
+			<input type="reset" />
+		</form>
+	</div>
+
 </body>
 </html>

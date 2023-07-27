@@ -4,26 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-<br> <Br> 
-<center> 
-<h2> Hello Aman</h2>
-<br> <Br>
-<form id="login" action="login"  method="GET">
-    <label>Username: </label>
-    <input type="text" name="username">
-    <br/><br/>
-    <label>Password: </label>
-    <input type="password" name="password">
-    <br/>
-    <button type="submit">Login</button> 
-    
-    <br> <br> <br> 
-    <a href="signUp"> Sign up Here </a>
-</form>
+<br><br> 
+	<div align="center">
+		<h1>Login</h1>
+		<form action="LoginServlet" method="post">
+			<label>Email </label>
+			<input type="email" name="email"/>
+			<br><br>
+			<label>Password </label>
+			<input type="password" name="password"/>
+			<br><br>
+			<input type="submit" value="Submit"/>
+			<input type="reset" />
+			<br><br>
+			<a href="http://localhost:8080/signUp">Sign Up Here</a>
+		</form>
+	</div>
 
-</center>
 </body>
 </html>
