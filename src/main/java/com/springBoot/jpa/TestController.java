@@ -1,5 +1,9 @@
 package com.springBoot.jpa;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -37,6 +41,37 @@ public class TestController {
 	{
 		return "signUp";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/signUpProcessing")
+	public String signUpProcessingHandlerMethod(@RequestParam String name) throws ClassNotFoundException, SQLException 
+	{			saveData(name);
+		
+		return "Done " +name ;
+	}
+	
+	
+	public static void saveData(String name) throws ClassNotFoundException, SQLException {
+		// 1. Load driver class
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		// 2. Create connection 
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/gjschool2","root","rootroot");  
+					   
+		System.out.println("Connection Established");
+		
+		// Create query
+		PreparedStatement stmt=con.prepareStatement("insert into users(name)values(?)");  
+		stmt.setString(1,name);  
+		
+  
+		//4 . Execute Query
+		int i=stmt.executeUpdate();
+		
+		
+		
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/add")

@@ -12,9 +12,9 @@
 <br><br>
 	<div align="center">
 		<h2>Sign Up Form</h2>
-		<form action = "signUp" method="post">
+		<form action = "signUpProcessing" method="post">
 			<label>Name</label>
-			<input type = "text" name = "name" />
+			<input type = "text" name="name" />
 			<br><br>
 			<label>Fathers Name</label>
 			<input type="text" name="fathername"/>
@@ -32,7 +32,9 @@
 			<input type="text" name="email"/>
 			<br><br>
 
-			<input type="button" value="Submit"/>
+			<input type="submit" value="Submit"/>
+
+			
 			<input type="reset" />
 		</form>
 	</div>
