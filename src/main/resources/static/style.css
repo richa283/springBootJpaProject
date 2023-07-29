@@ -1,0 +1,56 @@
+body
+{
+	background-color: #344a72;
+	font-family: Roboto, sans-serif;
+	
+}
+
+.loginpage {
+	margin: auto;
+	width: 360px;
+	height: 300px;
+	border-radius: 5px;
+	background-color: whitesmoke;
+}
+
+h1{
+	text-align: center;
+	padding-top: 20px;
+}
+
+form{
+	width: 300px;
+	margin-left: 20px;
+	
+}
+
+form label {
+	display: flex;
+	font-size: 18px;
+}
+
+form input{
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-radius: 6px;
+	
+}
+
+input[type="submit"]
+{
+	background-color: #49c1a2;
+	color: white;
+	width: 315px;
+	height: 35px;
+}
+input[type="reset"]
+{
+	background-color: whitesmoke;
+	color: black;
+	width: 100px;
+	height: 25px;
+}
+
+
+
