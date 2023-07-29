@@ -2,13 +2,16 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8"> 	
-<title>Login</title>
+	<meta charset="UTF-8">
+		<title>Login</title>
+	<link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 <br><br> 
-	<div align="center">
+	<div class = "loginpage">
 		<h1>Login</h1>
 		<form action="LoginServlet" method="post">
 			<label>Email </label>
@@ -18,9 +21,9 @@
 			<input type="password" name="password"/>
 			<br><br>
 			<input type="submit" value="Submit"/>
-			<input type="reset" />
 			<br><br>
-			<a href="signUp">Sign Up Here</a>
+			<a href="signUp">Sign up here...</a>
+			<input type="reset" value ="RESET" />
 		</form>
 	</div>
 

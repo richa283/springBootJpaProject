@@ -10,11 +10,11 @@
 
 <body>
 <br><br>
-	<div align="center">
+	<div class="signupbox" align="center">
 		<h2>Sign Up Form</h2>
-		<form action = "signUpProcessing" method="post">
+		<form action = "signUpHandlerMethod" method="post">
 			<label>Name</label>
-			<input type = "text" name="name" />
+			<input type = "text" name = "username" />
 			<br><br>
 			<label>Fathers Name</label>
 			<input type="text" name="fathername"/>
@@ -29,12 +29,11 @@
 			<input type="text" name="address"/>
 			<br><br>
 			<label>Email ID</label>
-			<input type="text" name="email"/>
+			<input type="email" name="email"/>
 			<br><br>
 
 			<input type="submit" value="Submit"/>
 
-			
 			<input type="reset" />
 		</form>
 	</div>
