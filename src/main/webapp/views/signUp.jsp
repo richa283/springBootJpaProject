@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 	<title>SIGN UP HERE</title>
+	<link rel = "stylesheet" href = "style.css"/>
 </head>
 
 <body>
@@ -32,8 +33,8 @@
 			<input type="email" name="email"/>
 			<br><br>
 
-			<input type="submit" value="Submit"/>
-			<input type="reset" />
+			<input type="submit" value="Submit"/><br><br>
+			<a href="Login">Already a user? Login here</a>
 		</form>
 	</div>
 

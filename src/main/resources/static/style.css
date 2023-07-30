@@ -12,7 +12,14 @@ body
 	border-radius: 5px;
 	background-color: whitesmoke;
 }
-
+.signupbox {
+	margin: auto;
+	width: 360px;
+	padding: 20px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: whitesmoke;
+}
 h1{
 	text-align: center;
 	padding-top: 20px;
