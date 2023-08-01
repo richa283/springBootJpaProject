@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServlet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -51,10 +55,43 @@ public class TestController {
 	
 	@ResponseBody
 	@RequestMapping("/signUpHandlerMethod")
-	public String signUpHandlerMethod(@RequestParam String username, @RequestParam String fathername, @RequestParam String mothername,
-			@RequestParam String mobile, @RequestParam String address, @RequestParam String email)
-	throws ClassNotFoundException, SQLException
+	public String signUpHandlerMethod(
+			@RequestParam String username, 
+			@RequestParam String fathername, 
+			@RequestParam String mothername, 
+			@RequestParam String mobile, 
+			@RequestParam String address, 
+			@RequestParam String email
+			)throws ClassNotFoundException, SQLException
 	{
+		
+		//Validating
+		if(!isValidName(username))
+		{
+			return "Invalid username. Name should not contain any digits";
+		}
+		if(!isValidfname(fathername))
+		{
+			return "This field should not contain any digits";
+		}
+		if(!isValidmname(mothername))
+		{
+			return "This field should not contain any digits";
+		}
+		if(!isValidMobile(mobile))
+		{
+			return "Invalid mobile number. Mobile number should be 10 digit number";
+		}
+		if(!isValidAddress(address))
+		{
+			return "Invalid address format";
+		}
+		if(!isValidEmail(email))
+		{
+			return "Invalid email format";
+		}
+		
+		//Save data to database
 		saveData(username,fathername,mothername,mobile,address,email);
 		
 		String name = username;
@@ -66,6 +103,33 @@ public class TestController {
 		return "Sign up successful by " +name+" !";
 	}
 
+	//Helper method to check if the name is valid (does not contain any digits)
+	private boolean isValidName(String name)
+	{
+		return !Pattern.compile("[0-9]").matcher(name).find();
+	}
+	private boolean isValidfname(String fathername)
+	{
+		return !Pattern.compile("[0-9]").matcher(fathername).find();
+	}
+	private boolean isValidmname(String mothername)
+	{
+		return !Pattern.compile("[0-9]").matcher(mothername).find();
+	}
+	private boolean isValidMobile(String mobile)
+	{
+		return Pattern.compile("\\d{10}").matcher(mobile).matches();
+	}
+	private boolean isValidAddress(String address)
+	{
+		return Pattern.compile("[A-Za-z]").matcher(address).matches();
+	}
+	private boolean isValidEmail(String email)
+	{
+		return Pattern.compile("^[A-Aa-z0-9._]+@[A-ZA-Z0-9.-]+\\.[A-Za-z]{2,6}$").matcher(email).matches();
+	}
+	
+	
 	public static void saveData(String username,String fathername,String mothername,String mobile,String address,String email) throws ClassNotFoundException, SQLException
 	{
 		//1.Load driver class

@@ -14,8 +14,9 @@
 	<div class="signupbox" align="center">
 		<h2>Sign Up Form</h2>
 		<form action = "signUpHandlerMethod" method="post">
+		
 			<label>Name</label>
-			<input type = "text" name = "username" />
+			<input type = "text" name = "username"/>
 			<br><br>
 			<label>Fathers Name</label>
 			<input type="text" name="fathername"/>
@@ -33,8 +34,8 @@
 			<input type="email" name="email"/>
 			<br><br>
 
-			<input type="submit" value="Submit"/><br><br>
-			<a href="Login">Already a user? Login here</a>
+			<input type="submit" value="Create your account" onclick="errorMessage()"/><br><br>
+			<p>Already have an account? <a href="Login">Login here</a></p>
 		</form>
 	</div>
 
