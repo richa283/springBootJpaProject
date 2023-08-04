@@ -33,9 +33,15 @@
 			<label>Email ID</label>
 			<input type="email" name="email"/>
 			<br><br>
+			<label>Password</label>
+			<input type="password" name="pass"/>
+			<br><br>
+			<label>Confirm Password</label>
+			<input type="password" name="cpass"/>
+			<br><br>
 
 			<input type="submit" value="Create your account" onclick="errorMessage()"/><br><br>
-			<p>Already have an account? <a href="Login">Login here</a></p>
+			<p>Already have an account? <a href="Login">Login here</a></p><input type="reset" value ="RESET" />
 		</form>
 	</div>
 

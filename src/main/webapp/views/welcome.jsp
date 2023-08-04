@@ -13,7 +13,7 @@
 <br><br> 
 	<div class = "loginpage">
 		<h1>Login</h1>
-		<form action="LoginServlet" method="post">
+		<form action="LoginHandlerMethod" method="post">
 			<label>Email </label>
 			<input type="email" name="email"/>
 			<br><br>
@@ -25,6 +25,8 @@
 			<a href="signUp">Sign up here...</a>
 			<input type="reset" value ="RESET" />
 		</form>
+		<br>
+		<a href="FetchUser">Fetch user</a>
 	</div>
 
 </body>
