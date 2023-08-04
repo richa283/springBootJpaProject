@@ -27,6 +27,8 @@
 		</form>
 		<br>
 		<a href="FetchUser">Fetch user</a>
+		<br> <Br> 
+		<center> ${validateUser}</center>
 	</div>
 
 </body>

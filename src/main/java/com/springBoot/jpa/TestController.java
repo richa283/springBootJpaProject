@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springBoot.Bean.SignUpBean;
+import com.springBoot.Model.SignUpModel;
 import com.springBoot.jpa.dao.UserRepository;
 import com.springBoot.jpa.entites.Users;
 
@@ -51,7 +54,8 @@ public class TestController {
 	@RequestMapping("/LoginHandlerMethod")
 	public String userLogin(
 			@RequestParam String email,
-			@RequestParam String password
+			@RequestParam String password,
+			Model model
 			) throws ClassNotFoundException, SQLException
 	{
 		String emailid = email;
@@ -59,7 +63,14 @@ public class TestController {
 		
 		//pending code to validate login
 		
-	return "homepage";
+		
+		boolean validUser = saveData(emailid, pass);
+		if(validUser){
+			return "homepage";
+		}else {
+			model.addAttribute("validateUser", "User Does not Exist!! Please SignUp");
+			return "welcome";	
+		}
 	}
 			
 	public static boolean saveData(String email, String pass) throws ClassNotFoundException, SQLException
@@ -70,8 +81,8 @@ public class TestController {
 				//3. Create query
 				String query = "Select * FROM signupdata WHERE email=? AND pass=?";
 				PreparedStatement stms = con.prepareStatement(query);
-				stms.setString(6, email);
-				stms.setString(7, pass);
+				stms.setString(1, email);
+				stms.setString(2, pass);
 				ResultSet rst = stms.executeQuery();
 
 				// 5. Check if user exists and if the provided password matches the hashed password
@@ -96,64 +107,47 @@ public class TestController {
 	
 	@ResponseBody
 	@RequestMapping("/signUpHandlerMethod")
-	public String signUpHandlerMethod(
-			@RequestParam String username, 
-			@RequestParam String fathername, 
-			@RequestParam String mothername, 
-			@RequestParam String mobile, 
-			@RequestParam String address, 
-			@RequestParam String email,
-			@RequestParam String pass,
-			@RequestParam String cpass
-			)throws ClassNotFoundException, SQLException
+	public String signUpHandlerMethod(SignUpBean Bean)throws ClassNotFoundException, SQLException
 	{
 		
 		//Validating
-		if(!isValidName(username))
+		if(!isValidName(Bean.getUsername()))
 		{
 			return "Invalid username. Name should not contain any digits";
 		}
-		if(!isValidfname(fathername))
+		if(!isValidfname(Bean.getFathername()))
 		{
 			return "This field should not contain any digits";
 		}
-		if(!isValidmname(mothername))
+		if(!isValidmname(Bean.getMothername()))
 		{
 			return "This field should not contain any digits";
 		}
-		if(!isValidMobile(mobile))
+		if(!isValidMobile(Bean.getMobile()))
 		{
 			return "Invalid mobile number. Mobile number should be 10 digit number";
 		}
-		if(!isValidAddress(address))
+		if(!isValidAddress(Bean.getAddress()))
 		{
 			return "Invalid address format";
 		}
-		if(!isValidEmail(email))
+		if(!isValidEmail(Bean.getEmail()))
 		{
 			return "Invalid email format";
 		}
-		if(!isValidPass(pass))
+		if(!isValidPass(Bean.getPass()))
 		{
 			return "Atleast 1 capital,1 small, 1 digit and 1 alphanumeric is required";
 		}
-		if(!isValidCpass(pass,cpass))
+		if(!isValidCpass(Bean.getPass(),Bean.getCpass()))
 		{
 			return "Password and confirm password do not match";
 		}
 		
 		//Save data to database
-		saveData(username,fathername,mothername,mobile,address,email,pass,cpass);
+		SignUpModel.saveData(Bean.getUsername(),Bean.getFathername(),Bean.getMothername(),Bean.getMobile(),Bean.getAddress(),Bean.getEmail(),Bean.getPass(),Bean.getCpass());
 		
-		String name = username;
-		String fname = fathername;
-		String mname = mothername;
-		String mob = mobile;
-		String add = address;
-		String mail = email;
-		String ps = pass;
-		String cps = cpass;
-		return "Sign up successful by " +name+" !";
+		return "SignUp successful!";
 	}
 
 	//Helper method to check if the name is valid (does not contain any digits)
@@ -191,31 +185,7 @@ public class TestController {
 	}
 	
 	
-	public static void saveData
-	(String username,String fathername,String mothername,
-	String mobile,String address,String email, String pass, String cpass) 
-			throws ClassNotFoundException, SQLException
-	{
-		//1.Load driver class
-		Class.forName("com.mysql.jdbc.Driver");
-		
-		//2.Create Connection
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/usersdata", "root", "root");
-		System.out.println("Connection established");
-		//3. Create query
-		PreparedStatement stms = con.prepareStatement("insert into signupdata(username,fathername,mothername,mobile,address,email,pass,cpass) values(?,?,?,?,?,?,?,?)");
-		stms.setString(1, username);
-		stms.setString(2, fathername);
-		stms.setString(3, mothername);
-		stms.setString(4, mobile);
-		stms.setString(5, address);
-		stms.setString(6, email);
-		stms.setString(7, pass);
-		stms.setString(8, cpass);
-		
-		//4.Execute query
-		int i = stms.executeUpdate();
-	}
+	
 	
 	@RequestMapping("/")
 	public String test3() {
